@@ -32,12 +32,13 @@ No se introduce un modelo de datos. La fecha, los nombres, las publicaciones y l
 
 ## Criterios de aceptación
 
-- [ ] `/` muestra el contenido de la referencia y no la página inicial de Next.js.
-- [ ] A 1440 × 900 px se reproducen el menú lateral de 248 px, la columna de hasta 760 px, la paleta y las tipografías de la referencia.
-- [ ] A 390 × 844 px todo el contenido es legible y no hay desplazamiento horizontal.
-- [ ] Ningún elemento conduce a una ruta inexistente ni aparenta ejecutar una acción real.
-- [ ] `npm run build` termina correctamente.
-- [ ] Los archivos modificados pasan ESLint; el fallo legado de `references/pantallas/support.js` queda fuera del alcance.
+- [x] `/` muestra el feed y no la página inicial de Next.js: encabezado «Buenas, Caro», compositor «Compartí un momento…», separador «PUBLICADO HOY» y, en este orden, las tres publicaciones de la referencia (Mateo/logro con 3 reacciones y 1 comentario; Mateo/actividad con foto y 5 reacciones y 2 comentarios; Anuncio general/anuncio con 8 reacciones y 0 comentarios), incluyendo sus textos, destinatarios, horarios, etiquetas e iconos.
+- [x] A 1440 × 900 px se reproducen el menú lateral de 248 px, la columna de hasta 760 px, la paleta y las tipografías de la referencia.
+- [x] A 390 × 844 px todo el contenido es legible, el menú lateral no reduce el área útil del feed y `document.documentElement.scrollWidth` no supera el ancho de la ventana.
+- [x] Los controles visibles son únicamente decorativos: no usan enlaces a rutas inexistentes, no cambian la URL y no aparentan ejecutar una acción real.
+- [x] El documento raíz usa idioma español y carga Fredoka y Nunito para los roles tipográficos indicados en la referencia; los metadatos identifican OpenDayCare · Sala Soles.
+- [x] `npm run build` termina correctamente.
+- [x] Los archivos modificados pasan ESLint; el fallo legado de `references/pantallas/support.js` queda fuera del alcance.
 
 ## Decisiones
 
