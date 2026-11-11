@@ -8,6 +8,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
+## Agente verificador de specs
+
+Usa `verificador-spec` (`.opencode/agents/verificador-spec.md`) para verificar los criterios de aceptación de los archivos en `specs/`. Marca `[x]` solo con evidencia; puede corregir fallos dentro del alcance, pero no cambiar el estado del spec ni crear commits.
+
 ## MCPs
 
 - Playwright Screenshots y cualquier cosa relacionada a Playwright tienen que estar en la carpeta .playwright-mcp
