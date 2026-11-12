@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Nino, Padre } from "../datos/ninos";
 import { Icono } from "./icono";
+import { NavegacionMovil } from "./navegacion-movil";
 
 function FilaDato({ titulo, valor }: { titulo: string; valor: string }) {
   return <div className="flex justify-between gap-3 border-b border-[#f0e6d8] px-[18px] py-[15px] last:border-b-0"><span className="text-[14.5px] text-[#94887b]">{titulo}</span><span className="text-right text-[14.5px] font-extrabold text-[#3f362e]">{valor}</span></div>;
@@ -21,13 +22,14 @@ function PadreVinculado({ padre, indice }: { padre: Padre; indice: number }) {
 export function PerfilNino({ nino }: { nino: Nino }) {
   return (
       <main className="h-screen min-w-0 flex-1 overflow-y-auto">
+        <NavegacionMovil seccionActiva="ninos" />
         <div className="mx-auto w-full max-w-[820px] px-5 pb-20 pt-[34px] sm:px-10">
           <Link href="/kids" className="mb-5 flex items-center gap-[7px] text-sm font-bold text-[#94887b]"><svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>Volver a Niños</Link>
           <div className="flex flex-wrap items-start gap-[26px]">
-            <div className="flex min-w-[300px] flex-1 flex-col gap-[18px]">
-              <header className="flex items-center gap-[18px]">
-                <div className="flex h-[84px] w-[84px] shrink-0 items-center justify-center rounded-full font-fredoka text-[34px] font-semibold" style={{ backgroundColor: nino.colorAvatar, color: nino.colorInicial }}>{nino.inicial}</div>
-                <div className="min-w-0 flex-1"><h1 className="m-0 font-fredoka text-[28px] font-semibold text-[#3f362e]">{nino.nombre}</h1><p className="m-0 mt-[3px] text-[15px] text-[#94887b]">{nino.edad} · Sala {nino.sala}</p></div>
+            <div className="flex min-w-0 flex-1 basis-full flex-col gap-[18px] md:min-w-[300px] md:basis-0">
+              <header className="flex flex-wrap items-center gap-[18px]">
+                <div className="flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-full font-fredoka text-[28px] font-semibold sm:h-[84px] sm:w-[84px] sm:text-[34px]" style={{ backgroundColor: nino.colorAvatar, color: nino.colorInicial }}>{nino.inicial}</div>
+                <div className="min-w-0 flex-1"><h1 className="m-0 font-fredoka text-2xl font-semibold text-[#3f362e] sm:text-[28px]">{nino.nombre}</h1><p className="m-0 mt-[3px] text-[15px] text-[#94887b]">{nino.edad} · Sala {nino.sala}</p></div>
                 <span className="rounded-xl border-[1.5px] border-[#ece0d0] bg-[#fffdf9] px-4 py-[9px] text-sm font-bold text-[#6e6359]">Editar</span>
               </header>
               {nino.alerta && (
@@ -42,7 +44,7 @@ export function PerfilNino({ nino }: { nino: Nino }) {
                 <FilaDato titulo="Ingreso" valor={nino.ingreso} />
               </div>
             </div>
-            <div className="flex w-[300px] shrink-0 flex-col gap-[14px]">
+            <div className="flex w-full shrink-0 flex-col gap-[14px] md:w-[300px]">
               <span className="flex w-full items-center justify-center gap-[9px] rounded-[14px] bg-[#3f362e] p-[13px] text-[15px] font-extrabold text-white"><Icono tipo="sol" className="h-[18px] w-[18px]" />Resumen del día</span>
               <section className="rounded-2xl border border-[#ece0d0] bg-[#fffdf9] px-[18px] py-4">
                 <h2 className="mb-[14px] mt-0 text-[12.5px] font-extrabold tracking-[.8px] text-[#8a7c6d]">PADRES VINCULADOS</h2>

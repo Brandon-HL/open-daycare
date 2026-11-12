@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Agente verificador de specs
 
-Usa `verificador-spec` (`.opencode/agents/verificador-spec.md`) para verificar los criterios de aceptación de los archivos en `specs/`. Marca `[x]` solo con evidencia; puede corregir fallos dentro del alcance, pero no cambiar el estado del spec ni crear commits.
+Ejecuta `verificador-spec` (`.opencode/agents/verificador-spec.md`) únicamente cuando el usuario lo solicite explícitamente. No lo invoques automáticamente al terminar `/spec-impl` ni por la sola existencia de criterios pendientes. Al completar el último paso de implementación, muestra los cambios y espera la revisión del usuario; no verifiques ni marques criterios de aceptación por tu cuenta. Cuando el usuario solicite la verificación, marca `[x]` solo con evidencia; el verificador puede corregir fallos dentro del alcance, pero no cambiar el estado del spec ni crear commits.
 
 ## MCPs
 

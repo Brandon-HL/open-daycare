@@ -34,15 +34,15 @@
 
 ## Criterios de aceptación
 
-- [ ] `/kids` muestra los ocho niños en el orden de la referencia, con sus nombres, edades, recuentos de padres, avatares y etiquetas. A 1440 × 900 px presenta dos columnas y un menú lateral de 248 px.
-- [ ] La búsqueda filtra las tarjetas mientras se escribe por nombre, sin distinguir mayúsculas ni tildes. Actualiza el contador, muestra un estado sin resultados y vuelve a mostrar ocho niños al borrar el texto; no hace solicitudes a un backend.
-- [ ] Cada tarjeta abre su propio perfil en `/kids/1` a `/kids/8`; los ocho perfiles muestran el nombre correcto y un ID desconocido devuelve 404.
-- [ ] `/kids/1` muestra la cabecera, alerta de maní, datos generales y padres Lucía y Diego con los estados y textos presentes en `perfil-nino.dc.html`.
-- [ ] Los otros siete perfiles muestran sus datos de demostración sin atribuirles la información de Mateo; solo Mateo y Tomás tienen alertas destacadas, y Valentina no muestra padres vinculados.
-- [ ] El menú lateral enlaza Feed y Niños y resalta la sección correspondiente; en escritorio `/` permite ir a `/kids`. El enlace «Volver a Niños» desde cada perfil regresa al listado.
-- [ ] A 390 × 844 px hay navegación compacta entre Feed y Niños, las tarjetas forman una columna, los paneles del perfil se apilan y `document.documentElement.scrollWidth` no supera el ancho de la ventana.
-- [ ] Los controles de acciones fuera de alcance son únicamente decorativos: no navegan a rutas inexistentes ni aparentan ejecutar una operación.
-- [ ] `npm run build` termina correctamente y los archivos modificados pasan ESLint; el fallo legado de `references/pantallas/support.js` queda fuera de alcance.
+- [x] `/kids` muestra los ocho niños en el orden de la referencia, con sus nombres, edades, recuentos de padres, avatares y etiquetas. A 1440 × 900 px presenta dos columnas y un menú lateral de 248 px.
+- [x] La búsqueda filtra las tarjetas mientras se escribe por nombre, sin distinguir mayúsculas ni tildes. Actualiza el contador, muestra un estado sin resultados y vuelve a mostrar ocho niños al borrar el texto; no hace solicitudes a un backend.
+- [x] Cada tarjeta abre su propio perfil en `/kids/1` a `/kids/8`; los ocho perfiles muestran el nombre correcto y un ID desconocido devuelve 404.
+- [x] `/kids/1` muestra la cabecera, alerta de maní, datos generales y padres Lucía y Diego con los estados y textos presentes en `perfil-nino.dc.html`.
+- [x] Los otros siete perfiles muestran sus datos de demostración sin atribuirles la información de Mateo; solo Mateo y Tomás tienen alertas destacadas, y Valentina no muestra padres vinculados.
+- [x] El menú lateral enlaza Feed y Niños y resalta la sección correspondiente; en escritorio `/` permite ir a `/kids`. El enlace «Volver a Niños» desde cada perfil regresa al listado.
+- [x] A 390 × 844 px hay navegación compacta entre Feed y Niños, las tarjetas forman una columna, los paneles del perfil se apilan y `document.documentElement.scrollWidth` no supera el ancho de la ventana.
+- [x] Los controles de acciones fuera de alcance son únicamente decorativos: no navegan a rutas inexistentes ni aparentan ejecutar una operación.
+- [x] `npm run build` termina correctamente y los archivos modificados pasan ESLint; el fallo legado de `references/pantallas/support.js` queda fuera de alcance.
 
 ## Decisiones
 
