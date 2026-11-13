@@ -1,6 +1,6 @@
 # SPEC 02 — Listado y perfiles visuales de niños
 
-> **Status:** Aprobado
+> **Status:** Implementado
 > **Depends on:** SPEC 01
 > **Date:** 2026-11-11
 > **Objective:** Reproducir las interfaces de listado y perfil de niños de las referencias, con ocho perfiles estáticos, búsqueda local y navegación entre las pantallas.
