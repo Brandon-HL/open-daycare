@@ -1,6 +1,6 @@
 # SPEC 01 — Feed visual en `/`
 
-> **Status:** Aprobado
+> **Status:** Implementado
 > **Depends on:** Ninguna
 > **Date:** 2026-11-10
 > **Objective:** Reproducir en la página de inicio la apariencia de `references/pantallas/feed.dc.html` con Tailwind 4, contenido fijo y adaptación móvil.
