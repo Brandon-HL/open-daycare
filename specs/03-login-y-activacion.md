@@ -1,6 +1,6 @@
 # SPEC 03 — Login y activación visual
 
-> **Status:** Aprobado
+> **Status:** Implementado
 > **Depends on:** SPEC 01, SPEC 02
 > **Date:** 2026-11-12
 > **Objective:** Reproducir las pantallas de inicio de sesión y activación de cuenta como interfaces de demostración, sin autenticación real.
@@ -11,7 +11,7 @@
 
 - `/login`: diseño de `references/pantallas/login.dc.html`, sin selector «Personal / Familia».
 - `/activate`: diseño de `references/pantallas/activar-cuenta.dc.html`, con la tarjeta de Mateo identificada como ejemplo.
-- Campos editables y vacíos.
+- Campos editables con los valores de ejemplo de la referencia en `/activate`.
 - Enlaces entre ambas pantallas.
 - Los dos accesos principales navegan al feed existente en `/` como demostración.
 - Adaptación a escritorio y móvil, reutilizando las fuentes y el icono del sol existentes.
@@ -26,7 +26,7 @@
 
 ## Datos
 
-No se introduce un modelo de datos ni persistencia. Mateo es contenido fijo de demostración; no se muestran códigos, correos ni contraseñas precargados.
+No se introduce un modelo de datos ni persistencia. Mateo y los valores `7K4P9`, `lucia.fernandez@gmail.com` y `contraseña` son contenido fijo de demostración.
 
 ## Plan de implementación
 
@@ -38,16 +38,16 @@ No se introduce un modelo de datos ni persistencia. Mateo es contenido fijo de d
 
 ## Criterios de aceptación
 
-- [ ] `/login` reproduce la composición de dos columnas y no muestra «Personal», «Familia» ni «INGRESO COMO».
-- [ ] `/activate` muestra a Mateo como ejemplo, tres campos vacíos y la autorización sin control interactivo.
-- [ ] Los enlaces entre pantallas funcionan.
-- [ ] Ambos accesos principales llevan a `/` sin comprobar datos ni crear una sesión.
-- [ ] `/` conserva el feed actual.
-- [ ] `/login` y `/activate` se visitan por URL directa, sin añadir una entrada al feed.
-- [ ] A 1440 × 900 px y 390 × 844 px ambas pantallas son legibles y no tienen desplazamiento horizontal.
-- [ ] Las pantallas utilizan Fredoka y Nunito, la paleta y el icono del sol de las referencias.
-- [ ] `npm run build` termina correctamente.
-- [ ] Los archivos nuevos pasan ESLint; el fallo legado de `references/pantallas/support.js` queda fuera del alcance.
+- [x] `/login` reproduce la composición de dos columnas y no muestra «Personal», «Familia» ni «INGRESO COMO».
+- [x] `/activate` muestra a Mateo como ejemplo, los valores `7K4P9`, `lucia.fernandez@gmail.com` y `contraseña`, y la autorización sin control interactivo.
+- [x] Los enlaces entre pantallas funcionan.
+- [x] Ambos accesos principales llevan a `/` sin comprobar datos ni crear una sesión.
+- [x] `/` conserva el feed actual.
+- [x] `/login` y `/activate` se visitan por URL directa, sin añadir una entrada al feed.
+- [x] A 1440 × 900 px y 390 × 844 px ambas pantallas son legibles y no tienen desplazamiento horizontal.
+- [x] Las pantallas utilizan Fredoka y Nunito, la paleta y el icono del sol de las referencias.
+- [x] `npm run build` termina correctamente.
+- [x] Los archivos nuevos pasan ESLint; el fallo legado de `references/pantallas/support.js` queda fuera del alcance.
 
 ## Decisiones
 
@@ -55,8 +55,8 @@ No se introduce un modelo de datos ni persistencia. Mateo es contenido fijo de d
 - **No:** selector de rol «Personal / Familia», porque el login solicitado no necesita esa opción.
 - **Sí:** navegación de demostración hacia `/`. Permite revisar el flujo visual sin simular autenticación.
 - **No:** autenticación, sesiones, backend, persistencia o protección de rutas.
-- **Sí:** campos vacíos con la tarjeta de Mateo como referencia visual.
-- **No:** código, correo o contraseña precargados, para evitar mostrar datos de ejemplo como credenciales válidas.
+- **Sí:** valores de ejemplo precargados con la tarjeta de Mateo, para reproducir fielmente la referencia visual.
+- **No:** interpretar esos valores como credenciales válidas o persistirlos.
 - **No:** recuperación de contraseña. El texto se conserva como elemento visual no interactivo.
 - **No:** checkbox interactivo para el consentimiento. El bloque será únicamente visual.
 - **No:** enlace desde el feed hacia `/login`. La pantalla se accederá por URL directa.

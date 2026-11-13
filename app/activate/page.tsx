@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Icono } from "../componentes/icono";
 
-function Campo({ etiqueta, tipo = "text", clase = "" }: { etiqueta: string; tipo?: string; clase?: string }) {
+function Campo({ etiqueta, tipo = "text", clase = "", valor }: { etiqueta: string; tipo?: string; clase?: string; valor?: string }) {
   return <label className="block">
     <span className="mb-2 block text-xs font-extrabold tracking-[.7px] text-[#94887b]">{etiqueta}</span>
-    <input type={tipo} className={`w-full rounded-[14px] border-[1.5px] border-[#eadfd0] bg-white px-4 py-3.5 text-[15px] text-[#3f362e] outline-none focus:border-[#f2937a] ${clase}`} />
+    <input type={tipo} defaultValue={valor} className={`w-full rounded-[14px] border-[1.5px] border-[#eadfd0] bg-white px-4 py-3.5 text-[15px] text-[#3f362e] outline-none focus:border-[#f2937a] ${clase}`} />
   </label>;
 }
 
@@ -21,9 +21,9 @@ export default function ActivatePage() {
       </div>
 
       <div className="space-y-[18px]">
-        <Campo etiqueta="CÓDIGO DE INVITACIÓN" clase="font-fredoka text-lg font-bold tracking-[3px]" />
-        <Campo etiqueta="EMAIL" tipo="email" />
-        <Campo etiqueta="CREAR CONTRASEÑA" tipo="password" clase="border-[#f2a78e]" />
+        <Campo etiqueta="CÓDIGO DE INVITACIÓN" valor="7K4P9" clase="font-fredoka text-lg font-bold tracking-[3px]" />
+        <Campo etiqueta="EMAIL" tipo="email" valor="lucia.fernandez@gmail.com" />
+        <Campo etiqueta="CREAR CONTRASEÑA" tipo="password" valor="contraseña" clase="border-[#f2a78e]" />
       </div>
 
       <div className="mb-6 mt-[18px] flex items-start gap-3 rounded-[14px] bg-[#fbf1d6] px-4 py-3.5">
