@@ -62,7 +62,7 @@ export function FormularioVinculacionPadre({ nombreNino, alCerrar, alEnviar, rut
         <div><h1 className="m-0 font-fredoka text-[18px] font-semibold text-[#3f362e]">Vincular padre</h1><p className="m-0 text-[13px] text-[#a89a8b]">a {nombreNino}</p></div>
         <button type="button" aria-label="Cerrar" onClick={alCerrar} className="flex h-[34px] w-[34px] items-center justify-center rounded-[10px] border-0 bg-[#f0e6d8] text-[#94887b] disabled:cursor-default disabled:opacity-60" disabled={!alCerrar}><svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12" /></svg></button>
       </header>
-      <form onSubmit={enviarFormulario} className="p-[22px] sm:px-[26px]">
+      <form noValidate onSubmit={enviarFormulario} className="p-[22px] sm:px-[26px]">
         <div className="mb-5 flex gap-[11px] rounded-[14px] bg-[#e3ecfb] p-[13px_16px]">
           <svg className="mt-px h-5 w-5 shrink-0 text-[#4e72c8]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
           <span className="text-[13.5px] leading-[1.45] text-[#3f5694]">Le enviaremos un correo con un código para que active su cuenta. Solo verá el feed de {nombreNino}.</span>

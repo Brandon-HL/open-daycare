@@ -1,6 +1,6 @@
 # SPEC 05 — Modal para vincular padre
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 02
 > **Fecha:** 2026-11-15
 > **Objetivo:** Reproducir la pantalla «Vincular padre» como un modal demostrativo accesible desde cualquier perfil de niño.
@@ -53,21 +53,21 @@ El código de invitación es el valor fijo de presentación `7K4P9`; no se almac
 
 ## Criterios de aceptación
 
-- [ ] Cada perfil de `/kids/1` a `/kids/8` muestra una acción funcional «Vincular otro padre».
-- [ ] Abrir la acción cambia la URL a `/kids/[id]/link-parent` y muestra el formulario como modal sobre el perfil del niño correspondiente.
-- [ ] El modal muestra el nombre correcto del niño para cada ID y el código fijo `7K4P9` con el texto `Vence en 7 días`.
-- [ ] El modal contiene campos editables de nombre y email, exactamente las tres opciones de parentesco `Mamá`, `Papá` y `Tutor/a`, y selecciona `Mamá` inicialmente.
-- [ ] Un nombre vacío o compuesto solo por espacios impide el envío y muestra un error debajo del campo de nombre.
-- [ ] Un email vacío o inválido impide el envío y muestra un error debajo del campo de email.
-- [ ] Un envío inválido conserva los valores ingresados, el parentesco seleccionado y la URL del modal.
-- [ ] Un envío válido no modifica `app/datos/ninos.ts` ni la lista visible de padres.
-- [ ] Un envío válido muestra un diálogo que indica explícitamente que no se envió ningún email de invitación; al aceptarlo vuelve al perfil de origen `/kids/[id]`.
-- [ ] El control de cierre vuelve al perfil de origen sin cambiar los datos del niño.
-- [ ] Cargar directamente `/kids/[id]/link-parent` muestra una alternativa independiente válida para esa ruta sin requerir una navegación cliente previa.
-- [ ] Un ID de niño desconocido devuelve 404 tanto para el perfil como para la ruta de invitación.
-- [ ] A 1440 × 900 px el modal coincide con la composición de referencia y permanece centrado sobre la aplicación.
-- [ ] A 390 × 844 px el modal es utilizable, el formulario puede desplazarse verticalmente si es necesario y `document.documentElement.scrollWidth` no supera el ancho de la ventana.
-- [ ] `npm run build` termina correctamente; los archivos de la aplicación modificados pasan ESLint, excluyendo el error legado conocido en `references/pantallas/support.js`.
+- [x] Cada perfil de `/kids/1` a `/kids/8` muestra una acción funcional «Vincular otro padre».
+- [x] Abrir la acción cambia la URL a `/kids/[id]/link-parent` y muestra el formulario como modal sobre el perfil del niño correspondiente.
+- [x] El modal muestra el nombre correcto del niño para cada ID y el código fijo `7K4P9` con el texto `Vence en 7 días`.
+- [x] El modal contiene campos editables de nombre y email, exactamente las tres opciones de parentesco `Mamá`, `Papá` y `Tutor/a`, y selecciona `Mamá` inicialmente.
+- [x] Un nombre vacío o compuesto solo por espacios impide el envío y muestra un error debajo del campo de nombre.
+- [x] Un email vacío o inválido impide el envío y muestra un error debajo del campo de email.
+- [x] Un envío inválido conserva los valores ingresados, el parentesco seleccionado y la URL del modal.
+- [x] Un envío válido no modifica `app/datos/ninos.ts` ni la lista visible de padres.
+- [x] Un envío válido muestra un diálogo que indica explícitamente que no se envió ningún email de invitación; al aceptarlo vuelve al perfil de origen `/kids/[id]`.
+- [x] El control de cierre vuelve al perfil de origen sin cambiar los datos del niño.
+- [x] Cargar directamente `/kids/[id]/link-parent` muestra una alternativa independiente válida para esa ruta sin requerir una navegación cliente previa.
+- [x] Un ID de niño desconocido devuelve 404 tanto para el perfil como para la ruta de invitación.
+- [x] A 1440 × 900 px el modal coincide con la composición de referencia y permanece centrado sobre la aplicación.
+- [x] A 390 × 844 px el modal es utilizable, el formulario puede desplazarse verticalmente si es necesario y `document.documentElement.scrollWidth` no supera el ancho de la ventana.
+- [x] `npm run build` termina correctamente; los archivos de la aplicación modificados pasan ESLint, excluyendo el error legado conocido en `references/pantallas/support.js`.
 
 ## Decisions
 
