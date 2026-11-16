@@ -22,7 +22,7 @@ export default async function PaginaVincularPadre({ params }: PageProps<"/kids/[
       <main className="min-w-0 flex-1">
         <NavegacionMovil seccionActiva="ninos" />
         <div className="flex min-h-[calc(100vh-64px)] items-start justify-center px-5 py-10 sm:px-6">
-          <FormularioVinculacionPadre nombreNino={nino.nombre} />
+          <FormularioVinculacionPadre nombreNino={nino.nombre} rutaRetorno={`/kids/${nino.id}`} />
         </div>
       </main>
     </div>
