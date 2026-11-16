@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Icono } from "./icono";
 
 type Destinatario = "mateo" | "sofia" | "benjamin" | "sala";
@@ -46,6 +47,7 @@ function EtiquetaSeccion({ children }: { children: string }) {
 }
 
 export function FormularioPublicacion({ onCancelar, onPublicar }: PropiedadesFormulario) {
+  const router = useRouter();
   const [datos, establecerDatos] = useState(datosIniciales);
   const [errores, establecerErrores] = useState<ErroresPublicacion>({});
 
@@ -103,14 +105,19 @@ export function FormularioPublicacion({ onCancelar, onPublicar }: PropiedadesFor
     establecerErrores(nuevosErrores);
 
     if (Object.keys(nuevosErrores).length === 0) {
-      onPublicar?.(datos);
+      if (onPublicar) {
+        onPublicar(datos);
+      } else {
+        window.alert("Demostración: no se guardó ninguna publicación.");
+        router.push("/");
+      }
     }
   }
 
   return (
     <section className="w-full max-w-[580px] overflow-hidden rounded-[24px] border border-[#ece0d0] bg-[#fbf4ec] text-[#3f362e] shadow-[0_20px_50px_-24px_rgba(63,54,46,.35)]">
       <header className="flex items-center justify-between border-b border-[#ece0d0] px-6 py-5">
-        <button type="button" onClick={onCancelar} className="border-0 bg-transparent p-0 text-[15px] font-bold text-[#94887b]">Cancelar</button>
+        <button type="button" onClick={onCancelar ?? (() => router.push("/"))} className="border-0 bg-transparent p-0 text-[15px] font-bold text-[#94887b]">Cancelar</button>
         <h1 className="m-0 font-fredoka text-lg font-semibold">Nueva publicación</h1>
         <button type="submit" form="formulario-publicacion" className="border-0 bg-transparent p-0 text-[15px] font-extrabold text-[#d9583c]">Publicar</button>
       </header>

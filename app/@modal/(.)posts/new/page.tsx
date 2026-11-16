@@ -1,6 +1,5 @@
-import { FormularioPublicacion } from "../../../componentes/formulario-publicacion";
-import { Modal } from "../../../componentes/modal";
+import { ContenedorModalPublicacion } from "../../../componentes/contenedor-modal-publicacion";
 
 export default function ModalNuevaPublicacion() {
-  return <Modal><FormularioPublicacion /></Modal>;
+  return <ContenedorModalPublicacion />;
 }
