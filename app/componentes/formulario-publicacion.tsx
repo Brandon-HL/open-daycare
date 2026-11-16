@@ -63,7 +63,7 @@ export function FormularioPublicacion({ onCancelar, onPublicar }: PropiedadesFor
 
   function alternarDestinatario(destinatario: Destinatario) {
     establecerDatos((actuales) => {
-      const seleccionados = destinatario === "sala"
+      const seleccionados: Destinatario[] = destinatario === "sala"
         ? actuales.destinatarios.includes("sala") ? [] : ["sala"]
         : actuales.destinatarios.includes(destinatario)
           ? actuales.destinatarios.filter((actual) => actual !== destinatario)
