@@ -13,6 +13,8 @@ type DatosFormulario = {
   notasMedicas: string;
 };
 
+type ErroresFormulario = Partial<Record<"nombre" | "fechaNacimiento" | "sala", string>>;
+
 const datosIniciales: DatosFormulario = {
   nombre: "",
   fechaNacimiento: "",
@@ -27,15 +29,67 @@ function EtiquetaCampo({ children }: { children: string }) {
 
 const estiloCampo = "w-full rounded-[14px] border-[1.5px] border-[#eadfd0] bg-white px-4 py-[13px] text-[15px] text-[#3f362e] outline-none placeholder:text-[#b6a99b] focus:border-[#f2937a]";
 
+function validarFecha(fecha: string) {
+  if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fecha)) {
+    return "Usá el formato dd/mm/aaaa.";
+  }
+
+  const [dia, mes, anio] = fecha.split("/").map(Number);
+  const fechaIngresada = new Date(anio, mes - 1, dia);
+  const fechaActual = new Date();
+  const hoy = new Date(fechaActual.getFullYear(), fechaActual.getMonth(), fechaActual.getDate());
+  const fechaValida = fechaIngresada.getFullYear() === anio
+    && fechaIngresada.getMonth() === mes - 1
+    && fechaIngresada.getDate() === dia;
+
+  if (!fechaValida) {
+    return "Ingresá una fecha real.";
+  }
+
+  if (fechaIngresada > hoy) {
+    return "La fecha no puede ser futura.";
+  }
+
+  return "";
+}
+
 export function FormularioNino() {
   const [datos, establecerDatos] = useState(datosIniciales);
+  const [errores, establecerErrores] = useState<ErroresFormulario>({});
 
   function actualizarCampo(campo: keyof DatosFormulario, valor: string) {
     establecerDatos((actuales) => ({ ...actuales, [campo]: valor }));
+    if (campo in errores) {
+      establecerErrores((actuales) => {
+        const nuevosErrores = { ...actuales };
+        delete nuevosErrores[campo as keyof ErroresFormulario];
+        return nuevosErrores;
+      });
+    }
   }
 
   function enviarFormulario(evento: FormEvent<HTMLFormElement>) {
     evento.preventDefault();
+    const nuevosErrores: ErroresFormulario = {};
+
+    if (!datos.nombre.trim()) {
+      nuevosErrores.nombre = "Ingresá el nombre completo.";
+    }
+
+    if (!datos.fechaNacimiento.trim()) {
+      nuevosErrores.fechaNacimiento = "Ingresá la fecha de nacimiento.";
+    } else {
+      const errorFecha = validarFecha(datos.fechaNacimiento.trim());
+      if (errorFecha) {
+        nuevosErrores.fechaNacimiento = errorFecha;
+      }
+    }
+
+    if (!datos.sala) {
+      nuevosErrores.sala = "Seleccioná una sala.";
+    }
+
+    establecerErrores(nuevosErrores);
   }
 
   return (
@@ -49,19 +103,22 @@ export function FormularioNino() {
         <form id="formulario-nino" onSubmit={enviarFormulario} className="p-6">
           <div className="mb-[18px]">
             <EtiquetaCampo>NOMBRE COMPLETO</EtiquetaCampo>
-            <input name="nombre" value={datos.nombre} onChange={(evento) => actualizarCampo("nombre", evento.target.value)} placeholder="Ej. Martina López" className={estiloCampo} />
+            <input name="nombre" value={datos.nombre} onChange={(evento) => actualizarCampo("nombre", evento.target.value)} placeholder="Ej. Martina López" aria-invalid={Boolean(errores.nombre)} className={`${estiloCampo} ${errores.nombre ? "border-[#d9583c]" : ""}`} />
+            {errores.nombre && <p className="mb-0 mt-1.5 text-[12.5px] font-bold text-[#d9583c]">{errores.nombre}</p>}
           </div>
           <div className="mb-[18px] grid grid-cols-1 gap-[14px] sm:grid-cols-2">
             <div>
               <EtiquetaCampo>FECHA DE NACIMIENTO</EtiquetaCampo>
-              <input name="fechaNacimiento" value={datos.fechaNacimiento} onChange={(evento) => actualizarCampo("fechaNacimiento", evento.target.value)} placeholder="dd/mm/aaaa" inputMode="numeric" className={estiloCampo} />
+              <input name="fechaNacimiento" value={datos.fechaNacimiento} onChange={(evento) => actualizarCampo("fechaNacimiento", evento.target.value)} placeholder="dd/mm/aaaa" inputMode="numeric" aria-invalid={Boolean(errores.fechaNacimiento)} className={`${estiloCampo} ${errores.fechaNacimiento ? "border-[#d9583c]" : ""}`} />
+              {errores.fechaNacimiento && <p className="mb-0 mt-1.5 text-[12.5px] font-bold text-[#d9583c]">{errores.fechaNacimiento}</p>}
             </div>
             <div>
               <EtiquetaCampo>SALA</EtiquetaCampo>
-              <select name="sala" value={datos.sala} onChange={(evento) => actualizarCampo("sala", evento.target.value)} className={`${estiloCampo} font-bold`}>
+              <select name="sala" value={datos.sala} onChange={(evento) => actualizarCampo("sala", evento.target.value)} aria-invalid={Boolean(errores.sala)} className={`${estiloCampo} font-bold ${errores.sala ? "border-[#d9583c]" : ""}`}>
                 <option value="Soles">Soles</option>
                 <option value="Lunas">Lunas</option>
               </select>
+              {errores.sala && <p className="mb-0 mt-1.5 text-[12.5px] font-bold text-[#d9583c]">{errores.sala}</p>}
             </div>
           </div>
           <div className="mb-[18px]">
