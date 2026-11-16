@@ -10,7 +10,7 @@ type DatosVinculacion = {
   parentesco: Parentesco;
 };
 
-export function FormularioVinculacionPadre({ nombreNino }: { nombreNino: string }) {
+export function FormularioVinculacionPadre({ nombreNino, alCerrar }: { nombreNino: string; alCerrar?: () => void }) {
   const [datos, establecerDatos] = useState<DatosVinculacion>({ nombre: "", email: "", parentesco: "Mamá" });
 
   function actualizarDato(campo: keyof DatosVinculacion, valor: string) {
@@ -21,7 +21,7 @@ export function FormularioVinculacionPadre({ nombreNino }: { nombreNino: string 
     <section className="overflow-hidden rounded-[24px] border border-[#ece0d0] bg-[#fbf4ec] shadow-[0_20px_50px_-24px_rgba(63,54,46,.35)]">
       <header className="flex items-center justify-between border-b border-[#ece0d0] px-6 py-5">
         <div><h1 className="m-0 font-fredoka text-[18px] font-semibold text-[#3f362e]">Vincular padre</h1><p className="m-0 text-[13px] text-[#a89a8b]">a {nombreNino}</p></div>
-        <button type="button" aria-label="Cerrar" className="flex h-[34px] w-[34px] items-center justify-center rounded-[10px] border-0 bg-[#f0e6d8] text-[#94887b]" disabled><svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12" /></svg></button>
+        <button type="button" aria-label="Cerrar" onClick={alCerrar} className="flex h-[34px] w-[34px] items-center justify-center rounded-[10px] border-0 bg-[#f0e6d8] text-[#94887b] disabled:cursor-default disabled:opacity-60" disabled={!alCerrar}><svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12" /></svg></button>
       </header>
       <form className="p-[22px] sm:px-[26px]">
         <div className="mb-5 flex gap-[11px] rounded-[14px] bg-[#e3ecfb] p-[13px_16px]">

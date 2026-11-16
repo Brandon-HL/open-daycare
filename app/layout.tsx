@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fredoka, Nunito } from "next/font/google";
+import type { ReactNode } from "react";
 import "./globals.css";
 
 const fredoka = Fredoka({ variable: "--font-fredoka", subsets: ["latin"] });
@@ -10,6 +11,6 @@ export const metadata: Metadata = {
   description: "Feed de la Sala Soles de OpenDayCare",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
-  return <html lang="es" className={`${fredoka.variable} ${nunito.variable}`}><body>{children}</body></html>;
+export default function RootLayout({ children, modal }: LayoutProps<"/"> & { modal: ReactNode }) {
+  return <html lang="es" className={`${fredoka.variable} ${nunito.variable}`}><body>{children}{modal}</body></html>;
 }
