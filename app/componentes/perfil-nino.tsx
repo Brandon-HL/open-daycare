@@ -51,7 +51,7 @@ export function PerfilNino({ nino }: { nino: Nino }) {
                 <div className="flex flex-col gap-[14px]">
                   {nino.padres.map((padre, indice) => <PadreVinculado key={padre.nombre} padre={padre} indice={indice} />)}
                   {nino.padres.length === 0 && <p className="m-0 text-sm text-[#a89a8b]">Sin padres vinculados</p>}
-                  <div className="flex items-center gap-3 pt-2"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-[1.5px] border-dashed border-[#d8cbba] text-[#b0a290]"><Icono tipo="plus" className="h-[18px] w-[18px]" /></span><span className="text-[14.5px] font-extrabold text-[#c5503a]">Vincular otro padre</span></div>
+                  <Link href={`/kids/${nino.id}/link-parent`} className="flex items-center gap-3 pt-2"><span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-[1.5px] border-dashed border-[#d8cbba] text-[#b0a290]"><Icono tipo="plus" className="h-[18px] w-[18px]" /></span><span className="text-[14.5px] font-extrabold text-[#c5503a]">Vincular otro padre</span></Link>
                 </div>
               </section>
             </div>

@@ -1,6 +1,6 @@
 # SPEC 04 — Formulario para agregar niño
 
-> **Status:** Aprobado
+> **Status:** Implementado
 > **Depends on:** SPEC 02
 > **Date:** 2026-11-13
 > **Objective:** Reproducir la pantalla «Agregar niño» con validación de fecha y selección de sala, como formulario de demostración sin guardar datos.
