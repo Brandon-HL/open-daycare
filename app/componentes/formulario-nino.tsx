@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 type Sala = "Soles" | "Lunas";
@@ -53,7 +54,14 @@ function validarFecha(fecha: string) {
   return "";
 }
 
+function formatearFecha(valor: string) {
+  const digitos = valor.replace(/\D/g, "").slice(0, 8);
+  const partes = [digitos.slice(0, 2), digitos.slice(2, 4), digitos.slice(4, 8)].filter(Boolean);
+  return partes.join("/");
+}
+
 export function FormularioNino() {
+  const router = useRouter();
   const [datos, establecerDatos] = useState(datosIniciales);
   const [errores, establecerErrores] = useState<ErroresFormulario>({});
 
@@ -90,6 +98,13 @@ export function FormularioNino() {
     }
 
     establecerErrores(nuevosErrores);
+
+    if (Object.keys(nuevosErrores).length > 0) {
+      return;
+    }
+
+    window.alert("Demostración: no se guardó ningún niño.");
+    router.push("/kids");
   }
 
   return (
@@ -109,7 +124,7 @@ export function FormularioNino() {
           <div className="mb-[18px] grid grid-cols-1 gap-[14px] sm:grid-cols-2">
             <div>
               <EtiquetaCampo>FECHA DE NACIMIENTO</EtiquetaCampo>
-              <input name="fechaNacimiento" value={datos.fechaNacimiento} onChange={(evento) => actualizarCampo("fechaNacimiento", evento.target.value)} placeholder="dd/mm/aaaa" inputMode="numeric" aria-invalid={Boolean(errores.fechaNacimiento)} className={`${estiloCampo} ${errores.fechaNacimiento ? "border-[#d9583c]" : ""}`} />
+              <input name="fechaNacimiento" value={datos.fechaNacimiento} onChange={(evento) => actualizarCampo("fechaNacimiento", formatearFecha(evento.target.value))} placeholder="dd/mm/aaaa" inputMode="numeric" maxLength={10} aria-invalid={Boolean(errores.fechaNacimiento)} className={`${estiloCampo} ${errores.fechaNacimiento ? "border-[#d9583c]" : ""}`} />
               {errores.fechaNacimiento && <p className="mb-0 mt-1.5 text-[12.5px] font-bold text-[#d9583c]">{errores.fechaNacimiento}</p>}
             </div>
             <div>
