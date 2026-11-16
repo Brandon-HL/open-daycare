@@ -1,6 +1,7 @@
 import { BarraLateral } from "./componentes/barra-lateral";
 import { Icono } from "./componentes/icono";
 import { NavegacionMovil } from "./componentes/navegacion-movil";
+import Link from "next/link";
 
 function Etiqueta({ tipo, children }: { tipo: "logro" | "actividad" | "anuncio"; children: string }) {
   const estilos = { logro: "bg-[#cfebd8] text-[#3e9b6c]", actividad: "bg-[#c7e7f1] text-[#2e89a6]", anuncio: "bg-[#ccd8f4] text-[#4e72c8]" };
@@ -28,7 +29,7 @@ function Publicacion({ hora, tipo, nombre, para, texto, reacciones, comentarios,
 export default function Home() {
   return <div className="flex h-screen overflow-hidden bg-[#f6ecdf] text-[#3f362e]"><BarraLateral seccionActiva="feed" /><main className="h-screen min-w-0 flex-1 overflow-y-auto"><NavegacionMovil seccionActiva="feed" /><div className="mx-auto w-full max-w-[760px] px-5 pb-20 pt-[34px] sm:px-10">
     <header className="mb-6"><div className="mb-1 text-[12.5px] font-extrabold tracking-[.8px] text-[#d9583c]">GUARDERÍA · SALA SOLES</div><h1 className="m-0 font-fredoka text-[30px] font-semibold text-[#3f362e]">Buenas, Caro</h1><p className="m-0 mt-[5px] text-[14.5px] text-[#94887b]">12 niños · martes 17 jun</p></header>
-    <div className="mb-6 flex items-center gap-[14px] rounded-[18px] border border-[#ece0d0] bg-[#fffdf9] px-[18px] py-[14px] shadow-[0_4px_14px_-10px_rgba(120,90,60,.4)]"><div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f2937a] font-fredoka text-base font-semibold text-white">C</div><span className="flex-1 text-[15px] text-[#a89a8b]">Compartí un momento…</span><span className="flex h-[38px] w-[38px] items-center justify-center rounded-xl bg-[#fbe3d8] text-[#e0654a]"><Icono tipo="foto" className="h-[19px] w-[19px]" /></span></div>
+    <Link href="/posts/new" className="mb-6 flex items-center gap-[14px] rounded-[18px] border border-[#ece0d0] bg-[#fffdf9] px-[18px] py-[14px] shadow-[0_4px_14px_-10px_rgba(120,90,60,.4)]"><div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f2937a] font-fredoka text-base font-semibold text-white">C</div><span className="flex-1 text-[15px] text-[#a89a8b]">Compartí un momento…</span><span className="flex h-[38px] w-[38px] items-center justify-center rounded-xl bg-[#fbe3d8] text-[#e0654a]"><Icono tipo="foto" className="h-[19px] w-[19px]" /></span></Link>
     <div className="mb-[14px] flex items-center gap-[14px]"><span className="text-[12.5px] font-extrabold tracking-[.8px] text-[#8a7c6d]">PUBLICADO HOY</span><span className="h-px flex-1 bg-[#e7dac8]" /></div>
     <div className="flex flex-col gap-4">
       <Publicacion hora="14:20" tipo="logro" nombre="Mateo" para="familia de Mateo" texto="¡Usó el orinal solito por primera vez! Estaba feliz de contárselo a todos. Un gran paso." reacciones={3} comentarios={1} />

@@ -15,7 +15,7 @@ export function BarraLateral({ seccionActiva }: { seccionActiva: "feed" | "ninos
         <div className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#f8c3a8] to-[#f2937a] text-white"><Icono tipo="sol" className="h-[21px] w-[21px]" /></div>
         <div><div className="font-fredoka text-[17px] font-semibold leading-none text-[#3f362e]">OpenDayCare</div><div className="mt-0.5 text-[11.5px] text-[#a89a8b]">Sala Soles</div></div>
       </div>
-      <div className="mb-[18px] flex w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-b from-[#f4977e] to-[#ee8164] px-3 py-3 text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,.75)]"><Icono tipo="plus" className="h-[17px] w-[17px]" />Nueva publicación</div>
+      <Link href="/posts/new" className="mb-[18px] flex w-full items-center justify-center gap-2 rounded-[14px] bg-gradient-to-b from-[#f4977e] to-[#ee8164] px-3 py-3 text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,.75)]"><Icono tipo="plus" className="h-[17px] w-[17px]" />Nueva publicación</Link>
       <nav className="flex flex-1 flex-col gap-1">
         {opciones.map(({ icono, texto, ...opcion }) => {
           const estaActiva = "seccion" in opcion && opcion.seccion === seccionActiva;
