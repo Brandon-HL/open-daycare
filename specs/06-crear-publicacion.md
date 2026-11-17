@@ -1,6 +1,6 @@
 # SPEC 06 — Crear publicación
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 01
 > **Fecha:** 2026-11-16
 > **Objetivo:** Reproducir `references/pantallas/crear-publicacion.dc.html` como un formulario modal sobre el feed para crear publicaciones demostrativas sin persistencia.
@@ -109,26 +109,26 @@ El estado inicial debe tener destinatarios vacíos, tipo vacío y descripción v
 
 ## Criterios de aceptación
 
-- [ ] La referencia visual se transforma en componentes React/TypeScript consistentes con la aplicación.
-- [ ] «Nueva publicación» abre `/posts/new` como modal sobre `/`.
-- [ ] «Compartí un momento…» abre `/posts/new` como modal sobre `/`.
-- [ ] La visita directa o recarga de `/posts/new` muestra una alternativa de página completa válida.
-- [ ] «Cancelar» y el botón atrás del navegador cierran el modal y vuelven al feed.
-- [ ] El formulario inicia vacío: sin destinatarios, tipo ni descripción.
-- [ ] Solo aparecen Mateo, Sofía y Benjamín como destinatarios individuales.
-- [ ] Los destinatarios individuales permiten selección múltiple.
-- [ ] «Toda la sala» es mutuamente excluyente con los destinatarios individuales.
-- [ ] Las siete opciones de tipo son mutuamente excluyentes.
-- [ ] La descripción puede editarse y conserva el texto introducido ante errores.
-- [ ] Las fotos son elementos visuales y «Agregar» no inicia una subida.
-- [ ] Un envío sin destinatario muestra un error y permanece en el formulario.
-- [ ] Un envío sin tipo muestra un error y permanece en el formulario.
-- [ ] Un envío sin descripción, o con solo espacios, muestra un error y permanece en el formulario.
-- [ ] Un envío válido muestra un aviso explícito de demostración sin guardado.
-- [ ] Tras aceptar el aviso, el usuario vuelve a `/`.
-- [ ] El feed conserva sus publicaciones originales después del flujo y de una recarga.
-- [ ] A 390 × 844 px no existe desplazamiento horizontal y el formulario sigue siendo utilizable.
-- [ ] `npm run build` termina correctamente; el fallo legado de `references/pantallas/support.js` queda fuera del alcance.
+- [x] La referencia visual se transforma en componentes React/TypeScript consistentes con la aplicación.
+- [x] «Nueva publicación» abre `/posts/new` como modal sobre `/`.
+- [x] «Compartí un momento…» abre `/posts/new` como modal sobre `/`.
+- [x] La visita directa o recarga de `/posts/new` muestra una alternativa de página completa válida.
+- [x] «Cancelar» y el botón atrás del navegador cierran el modal y vuelven al feed.
+- [x] El formulario inicia vacío: sin destinatarios, tipo ni descripción.
+- [x] Solo aparecen Mateo, Sofía y Benjamín como destinatarios individuales.
+- [x] Los destinatarios individuales permiten selección múltiple.
+- [x] «Toda la sala» es mutuamente excluyente con los destinatarios individuales.
+- [x] Las siete opciones de tipo son mutuamente excluyentes.
+- [x] La descripción puede editarse y conserva el texto introducido ante errores.
+- [x] Las fotos son elementos visuales y «Agregar» no inicia una subida.
+- [x] Un envío sin destinatario muestra un error y permanece en el formulario.
+- [x] Un envío sin tipo muestra un error y permanece en el formulario.
+- [x] Un envío sin descripción, o con solo espacios, muestra un error y permanece en el formulario.
+- [x] Un envío válido muestra un aviso explícito de demostración sin guardado.
+- [x] Tras aceptar el aviso, el usuario vuelve a `/`.
+- [x] El feed conserva sus publicaciones originales después del flujo y de una recarga.
+- [x] A 390 × 844 px no existe desplazamiento horizontal y el formulario sigue siendo utilizable.
+- [x] `npm run build` termina correctamente; el fallo legado de `references/pantallas/support.js` queda fuera del alcance.
 
 ## Decisiones
 
