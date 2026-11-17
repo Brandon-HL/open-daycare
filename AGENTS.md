@@ -16,11 +16,23 @@ Ejecuta `verificador-spec` (`.opencode/agents/verificador-spec.md`) únicamente 
 
 - Playwright Screenshots y cualquier cosa relacionada a Playwright tienen que estar en la carpeta .playwright-mcp
 - Context7 Usaremos este MCP para traer la información actualizada del framework.
+- Para tareas de Supabase, usar el MCP de Supabase cuando esté disponible y verificar siempre la documentación actualizada antes de implementar.
+
+## Supabase
+
+- Cualquier tarea relacionada con Supabase debe seguir `.agents/skills/supabase/SKILL.md`.
+- Antes de cambiar tablas, columnas, migraciones, índices, funciones, triggers, RLS o consultas PostgreSQL, seguir también `.agents/skills/supabase-postgres-best-practices/SKILL.md`.
+- Mantener activado RLS en todas las tablas de esquemas expuestos y diseñar políticas con autorización por fila; `TO authenticated` por sí solo no restringe los datos del usuario.
+- No exponer claves `service_role` ni claves secretas en el cliente. Las variables `NEXT_PUBLIC_*` llegan al navegador.
+- No usar `user_metadata` para decisiones de autorización; usar `app_metadata`/`raw_app_meta_data` cuando corresponda.
+- Para cambios de esquema, identificar primero si el proyecto usa esquemas declarativos (`supabase/schemas/`) o migraciones imperativas. No inventar nombres de migración: consultar `supabase migration new --help` y la versión instalada.
+- Verificar los cambios con una consulta o prueba funcional y revisar los advisories de Supabase cuando aplique.
 
 ## Proyecto
 
 - Es un único proyecto Next.js 16.4.4 con App Router; la entrada actual es `app/page.tsx` y el layout global está en `app/layout.tsx`.
-- Usa npm y `package-lock.json`; no hay monorepo, backend, base de datos ni variables de entorno documentadas.
+- Usa npm y `package-lock.json`; no hay monorepo ni backend implementado.
+- Supabase aún no está integrado en la aplicación: no hay cliente, migraciones, configuración local ni variables de entorno documentadas. La carpeta `references/` y la referencia externa `07-DB-Schema` contienen documentación de apoyo, no una base de datos implementada.
 - `references/` contiene pantallas de referencia, no la aplicación. Sin embargo, ESLint incluye sus archivos JavaScript.
 
 ## Comandos
@@ -40,6 +52,9 @@ Ejecuta `verificador-spec` (`.opencode/agents/verificador-spec.md`) únicamente 
 
 - /spec Usaremos esta habilidad para crear las especificaciones.
 - /spec-impl Usaremos esta skill para hacer las implementaciones.
+- `supabase`: guía obligatoria para cualquier tarea de Supabase, autenticación, RLS, Storage, Realtime, Edge Functions, Data API o MCP de Supabase.
+- `supabase-postgres-best-practices`: guía obligatoria para diseño, consultas, rendimiento y seguridad de PostgreSQL.
+- Las skills están instaladas en `.agents/skills/`; leer su `SKILL.md` antes de usarlas.
 
 <!-- BEGIN:nextjs-agent-feedback -->
 
